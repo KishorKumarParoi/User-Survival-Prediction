@@ -120,10 +120,14 @@ datasets/
 *.ckpt
 *.h5
 *.pkl
+!artifacts/models/*.pkl
+!artifacts/processed/*.pkl
 *.joblib
 models/
 checkpoints/
 weights/
+!artifacts/models/**
+!artifacts/processed/**
 
 # ==============================================================================
 # Vector Databases & Embeddings Storage

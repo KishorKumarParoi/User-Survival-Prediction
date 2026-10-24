@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 520" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#312e81" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#065f46" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#701a75" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#86198f" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#831843" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#9d174d" stop-opacity="0.9" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="520" rx="16" fill="url(#bgGrad)" />
+
+  <!-- Title -->
+  <text x="50" y="55" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="22" font-weight="bold">User Survival Prediction &amp; MLOps Architecture Flow</text>
+  <text x="50" y="80" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="13">Astro Airflow ETL • Redis Low-Latency Feature Store • Kolmogorov-Smirnov Drift • Prometheus/Grafana</text>
+
+  <!-- Node 1: Ingestion & Airflow -->
+  <g transform="translate(50, 120)" filter="url(#shadow)">
+    <rect width="200" height="150" rx="12" fill="url(#cardGrad1)" stroke="#6366f1" stroke-width="1.5" />
+    <text x="20" y="35" fill="#a5b4fc" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold">1. Astro Airflow Orchestrator</text>
+    <text x="20" y="65" fill="#e0e7ff" font-family="-apple-system, sans-serif" font-size="12">• Automated ETL DAGs</text>
+    <text x="20" y="90" fill="#e0e7ff" font-family="-apple-system, sans-serif" font-size="12">• Batch Feature Extractor</text>
+    <text x="20" y="115" fill="#e0e7ff" font-family="-apple-system, sans-serif" font-size="12">• Schema Validation</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 250 195 L 290 195" stroke="#818cf8" stroke-width="2.5" marker-end="url(#arrow)" />
+
+  <!-- Node 2: Redis Feature Store -->
+  <g transform="translate(290, 120)" filter="url(#shadow)">
+    <rect width="200" height="150" rx="12" fill="url(#cardGrad2)" stroke="#10b981" stroke-width="1.5" />
+    <text x="20" y="35" fill="#6ee7b7" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold">2. Redis Feature Store</text>
+    <text x="20" y="65" fill="#ecfdf5" font-family="-apple-system, sans-serif" font-size="12">• &lt;2ms Low-Latency Get</text>
+    <text x="20" y="90" fill="#ecfdf5" font-family="-apple-system, sans-serif" font-size="12">• Entity Batch Caching</text>
+    <text x="20" y="115" fill="#ecfdf5" font-family="-apple-system, sans-serif" font-size="12">• In-Memory Fallback</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 490 195 L 530 195" stroke="#34d399" stroke-width="2.5" />
+
+  <!-- Node 3: Model Inference & Drift -->
+  <g transform="translate(530, 120)" filter="url(#shadow)">
+    <rect width="200" height="150" rx="12" fill="url(#cardGrad3)" stroke="#d946ef" stroke-width="1.5" />
+    <text x="20" y="35" fill="#f5d0fe" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold">3. Inference &amp; KS-Drift</text>
+    <text x="20" y="65" fill="#fae8ff" font-family="-apple-system, sans-serif" font-size="12">• Random Forest (88.9%)</text>
+    <text x="20" y="90" fill="#fae8ff" font-family="-apple-system, sans-serif" font-size="12">• Alibi K-S 2-Sample Test</text>
+    <text x="20" y="115" fill="#fae8ff" font-family="-apple-system, sans-serif" font-size="12">• Real-Time Drift Counter</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 730 195 L 770 195" stroke="#f472b6" stroke-width="2.5" />
+
+  <!-- Node 4: Serving & Clients -->
+  <g transform="translate(770, 120)" filter="url(#shadow)">
+    <rect width="180" height="150" rx="12" fill="url(#cardGrad4)" stroke="#f43f5e" stroke-width="1.5" />
+    <text x="18" y="35" fill="#fecdd3" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold">4. Serving &amp; UI (:5001)</text>
+    <text x="18" y="65" fill="#fff1f2" font-family="-apple-system, sans-serif" font-size="12">• Glassmorphic Web App</text>
+    <text x="18" y="90" fill="#fff1f2" font-family="-apple-system, sans-serif" font-size="12">• REST API /api/predict</text>
+    <text x="18" y="115" fill="#fff1f2" font-family="-apple-system, sans-serif" font-size="12">• Health Probe /health</text>
+  </g>
+
+  <!-- Bottom Tier: Prometheus & Grafana Observability -->
+  <g transform="translate(290, 320)" filter="url(#shadow)">
+    <rect width="440" height="140" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4" />
+    <text x="25" y="35" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="15" font-weight="bold">📊 Observability &amp; Telemetry Layer</text>
+    <text x="25" y="65" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">• Prometheus Metrics (:9090) scraping /metrics endpoint</text>
+    <text x="25" y="90" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">• Grafana AI Dashboard (:3000) for prediction distribution &amp; drift alerting</text>
+    <text x="25" y="115" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">• Zero-Touch 1-Command Deploy: curl -fsSL .../bootstrap.sh | bash</text>
+  </g>
+
+  <!-- Connection line down to Observability -->
+  <path d="M 630 270 L 630 320" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+</svg>

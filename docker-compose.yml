@@ -1,27 +1,67 @@
-version: '3'
+version: '3.8'
+
 services:
+  redis:
+    image: redis:7-alpine
+    container_name: survival-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    networks:
+      - survival-net
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: kishorkumarparoi/user-survival-prediction:latest
+    container_name: survival-web
+    restart: unless-stopped
+    environment:
+      - PORT=5001
+      - PROMETHEUS_PORT=8001
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    ports:
+      - "5001:5001"
+      - "8001:8001"
+    depends_on:
+      redis:
+        condition: service_healthy
+    networks:
+      - survival-net
+
   prometheus:
     image: prom/prometheus:latest
-    container_name: prometheus
+    container_name: survival-prometheus
+    restart: unless-stopped
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
     networks:
-      - monitoring
+      - survival-net
+    depends_on:
+      - web
 
   grafana:
     image: grafana/grafana:latest
-    container_name: grafana
+    container_name: survival-grafana
+    restart: unless-stopped
     ports:
       - "3000:3000"
     environment:
-      GF_SECURITY_ADMIN_PASSWORD: "admin"
+      - GF_SECURITY_ADMIN_PASSWORD=admin
     networks:
-      - monitoring
+      - survival-net
     depends_on:
       - prometheus
 
 networks:
-  monitoring:
+  survival-net:
     driver: bridge
